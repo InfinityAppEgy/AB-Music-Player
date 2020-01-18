@@ -18,21 +18,21 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.design.internal.NavigationMenuView;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.view.ViewPager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.view.ActionMode;
-import android.support.v7.widget.PopupMenu;
+import androidx.annotation.NonNull;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.internal.NavigationMenuView;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.tabs.TabLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.core.content.ContextCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.viewpager.widget.ViewPager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.appcompat.view.ActionMode;
+import androidx.appcompat.widget.PopupMenu;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -43,12 +43,12 @@ import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import com.google.android.material.navigation.NavigationView;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
@@ -277,22 +277,9 @@ public class ActivityMain extends AppCompatActivity
                 break;
         }
 
-        //TypeFaceHelper.setDefaultFont(this, "monospace", "DancingScript-Regular.otf");
-
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
-
-        /*seekBar = findViewById(R.id.seekbar);
-        seekBar.setMax(100);
-        seekBar.setPadding(0,0,0,0);
-        seekBar.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                return true;
-            }
-        });*/
-
 
         // Obtain the Firebase Analytics instance.
         FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -525,8 +512,6 @@ public class ActivityMain extends AppCompatActivity
     private void setTextAndIconColor() {
         songNameMiniPlayer.setTextColor(ColorHelper.getPrimaryTextColor());
         artistNameMiniPlayer.setTextColor(ColorHelper.getSecondaryTextColor());
-        /*buttonPlay.setColorFilter(ColorHelper.getPrimaryTextColor());
-        buttonNext.setColorFilter(ColorHelper.getPrimaryTextColor());*/
     }
 
     private void disableNavigationViewScrollbars() {
@@ -539,10 +524,7 @@ public class ActivityMain extends AppCompatActivity
     }
 
     private void setSystemDefaultBackground() {
-        //findViewById(R.id.image_view_view_pager).setBackgroundDrawable(ColorHelper.getBaseThemeDrawable());
         gradientOverlay.setVisibility(View.VISIBLE);
-        /*findViewById(R.id.image_view_view_pager)
-                .setBackgroundDrawable(ColorHelper.GetGradientDrawableDark());*/
     }
 
     public void setBlurryBackgroundForMainLib(){
@@ -550,8 +532,6 @@ public class ActivityMain extends AppCompatActivity
         Glide.with(this)
                 .load(Uri.fromFile(new File(MyApp.getContext().getFilesDir() + getString(R.string.main_lib_back_custom_image))))
                 .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
-                //.placeholder(R.drawable.back2)
-                //.centerCrop()
                 .into(((ImageView) findViewById(R.id.image_view_view_pager)));
     }
 
@@ -559,8 +539,6 @@ public class ActivityMain extends AppCompatActivity
         Glide.with(this)
                 .load(Uri.fromFile(new File(MyApp.getContext().getFilesDir() + getString(R.string.nav_back_custom_image))))
                 .signature(new StringSignature(String.valueOf(System.currentTimeMillis())))
-                //.placeholder(R.drawable.back1)
-                //.centerCrop()
                 .into(navViewBack);
     }
 
@@ -611,8 +589,6 @@ public class ActivityMain extends AppCompatActivity
                         }
                     })
                     .build();
-
-            //dialog.getWindow().getAttributes().windowAnimations = R.style.MyAnimation_Window;
 
             dialog.show();
 

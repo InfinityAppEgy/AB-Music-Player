@@ -12,7 +12,6 @@ buildscript {
 
     dependencies {
         classpath 'com.github.triplet.gradle:play-publisher:1.2.2'
-        //classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.4'
     }
 }
 
@@ -125,21 +124,22 @@ android {
     kapt {
         generateStubs = true
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:support-v4:28.0.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:design:28.0.0'
-    //noinspection GradleCompatible
-    implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
     testImplementation 'junit:junit:4.13'
 
     //small animations for lyric loading
@@ -193,12 +193,12 @@ dependencies {
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 
     //crop images
-    implementation 'com.theartofdev.edmodo:android-image-cropper:2.6.0'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 
     //view binding
     //noinspection AnnotationProcessorOnCompilePath
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    kapt 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:10.1.0'
+    kapt 'com.jakewharton:butterknife-compiler:10.1.0'
 
     //font
     //implementation 'uk.co.chrisjenx:calligraphy:2.3.0'

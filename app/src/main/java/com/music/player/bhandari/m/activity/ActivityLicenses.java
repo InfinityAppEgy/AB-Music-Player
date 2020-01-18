@@ -1,15 +1,11 @@
 package com.music.player.bhandari.m.activity;
 
 import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;

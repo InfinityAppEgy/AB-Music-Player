@@ -6,12 +6,12 @@ import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.support.design.widget.Snackbar
-import android.support.v4.content.ContextCompat
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
+import com.google.android.material.snackbar.Snackbar
+import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -79,7 +79,7 @@ class ActivitySavedLyrics: AppCompatActivity() {
         }
 
         recyclerViewSavedLyrics.adapter = adapter
-        recyclerViewSavedLyrics.layoutManager = LinearLayoutManager(this)
+        recyclerViewSavedLyrics.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
 
         title = getString(R.string.nav_saved_lyrics)
 
@@ -215,7 +215,7 @@ class ActivitySavedLyrics: AppCompatActivity() {
         }
     }
 
-    inner class SavedLyricsAdapter: RecyclerView.Adapter<SavedLyricsAdapter.MyViewHolder>() {
+    inner class SavedLyricsAdapter: androidx.recyclerview.widget.RecyclerView.Adapter<SavedLyricsAdapter.MyViewHolder>() {
 
         init{
             //setHasStableIds(true)
@@ -279,7 +279,7 @@ class ActivitySavedLyrics: AppCompatActivity() {
             return position
         }*/
 
-        inner class MyViewHolder(v: View): RecyclerView.ViewHolder(v), View.OnClickListener {
+        inner class MyViewHolder(v: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(v), View.OnClickListener {
 
             init {
                 v.setOnClickListener(this)

@@ -8,12 +8,12 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.CardView
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.Toolbar
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.appcompat.widget.Toolbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -155,7 +155,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
                                         , trackInfo.track?.album?.image?.last()?.text ?: ""
                                         , it.url)}
                                 ?: listOf())
-                recyclerAlbumTracks.layoutManager = LinearLayoutManager(this)
+                recyclerAlbumTracks.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
                 recyclerAlbumTracks.isNestedScrollingEnabled = false
             }else{
                 albumSection.visibility = View.GONE
@@ -169,7 +169,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
                                         , "${it.artist.name} | Match ${String.format("%.2f", it.match*100)}%"
                                         , it.image.last().text
                                         , it.url) } ?: listOf())
-                recyclerSimilarTracks.layoutManager = LinearLayoutManager(this)
+                recyclerSimilarTracks.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
                 recyclerSimilarTracks.isNestedScrollingEnabled = false
             }else{
                 similarTrackSection.visibility = View.GONE
@@ -200,7 +200,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
     }
 
-    class TagsAdapter(): RecyclerView.Adapter<TagsAdapter.MyViewHolder>(){
+    class TagsAdapter(): androidx.recyclerview.widget.RecyclerView.Adapter<TagsAdapter.MyViewHolder>(){
 
         private var tags: List<String> = mutableListOf()
 
@@ -211,7 +211,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
             this.tags = tags
         }
 
-        class MyViewHolder(view: View): RecyclerView.ViewHolder(view){
+        class MyViewHolder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view){
             var tagTextView: TextView = view.findViewById(R.id.tagTextView)
         }
 
@@ -222,7 +222,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
 
         override fun onBindViewHolder(p0: MyViewHolder, p1: Int) {
             p0.tagTextView.text = tags[p1]
-            (p0.itemView as CardView).setCardBackgroundColor(Color.parseColor(colors[random.nextInt(12)]))
+            (p0.itemView as androidx.cardview.widget.CardView).setCardBackgroundColor(Color.parseColor(colors[random.nextInt(12)]))
         }
 
         override fun getItemCount(): Int {
@@ -230,7 +230,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
         }
     }
 
-    class TracksAdapter(): RecyclerView.Adapter<TracksAdapter.MyViewHolder>(){
+    class TracksAdapter(): androidx.recyclerview.widget.RecyclerView.Adapter<TracksAdapter.MyViewHolder>(){
 
         data class TrackItem(val trackTitle: String, val secondaryText: String, val imageUrl: String, val clickUrl: String)
         private var tracks:List<TrackItem> = mutableListOf()
@@ -241,7 +241,7 @@ class TrackInfoActivity: AppCompatActivity() , TrackInfo.Callback{
             this.tracks = tracks
         }
 
-        inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener{
+        inner class MyViewHolder(view: View): androidx.recyclerview.widget.RecyclerView.ViewHolder(view), View.OnClickListener{
             var trackTitle: TextView = view.findViewById(R.id.trackInfo)
             var secondaryText: TextView = view.findViewById(R.id.playCount)
             var imageView: ImageView = view.findViewById(R.id.imageView)
